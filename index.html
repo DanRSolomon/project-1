@@ -21,9 +21,60 @@
         crossorigin="anonymous" />
 </head>
 
+<style>
+body {
+    background-image: url(assets/images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+button {
+    margin-top: 7px;
+}
+
+@media screen and (max-width: 1211px) {
+    body {
+        background-size: auto;}
+    
+}
+</style>
+
 <body>
 
+    <!-- Nav Bar Header -->
     <div class="container">
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-brand mb-0 h1">aMUSEme</span>
+            <span class="navbar-text text-black">
+                Find Your Inspiration
+            </span>
+        </nav>
+        <br>
+        <!-- Search Input Forms Here -->
+        <form class="row">
+            <div class="form-group text-white text-center col-6">
+                <label for="compilation-Input"><strong>Compilation Search</strong></label>
+                <input type="text" class="form-control" id="compilation-Input" placeholder="Find Related Art, Articles, Poetry, Books, you name it">
+                <div class="input-group-append">
+                    <!-- Button triggers new Compilation Search to be added -->
+                    <button class="btn btn-outline-secondary" type="button" id="add-compilation-btn">Find Your Muse</button>
+                </div>
+            </div>
+            <div class="form-group text-white text-center col-6">
+                <label for="music-Input"><strong>Search Music</strong></label>
+                <input type="text" class="form-control" id="music-Input" placeholder="Search Bands, songs, albums, radio stations and more">
+                <div class="input-group-append">
+                    <!-- Button triggers new Music Search to be added -->
+                    <button class="btn btn-outline-secondary" type="button" id="add-music-btn">Search Music</button>
+                </div>
+            </div>
+        </form>
+        <br>
+        <!-- Declaring the HTML location to input the 2 seperate search results -->
+        <div class="row" id="compilation-results-appear-here">
+        </div>
+        <div id="sidebar-wrapper music-results-appear-here">
+        </div>
 
     </div>
 
