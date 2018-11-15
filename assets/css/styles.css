@@ -1,0 +1,15 @@
+body {
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+button {
+    margin-top: 7px;
+}
+
+@media screen and (max-width: 1211px) {
+    body {
+        background-size: auto;}
+    
+}
