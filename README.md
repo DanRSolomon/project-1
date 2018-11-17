@@ -10,8 +10,8 @@ Project Description --- This page provides musical and visual inspiration to get
 
 Sketch of final product - ![layout-image](/assets/images/art-inspiration-compilation.gif) -- created by Team Member Jennifer
 
-APIs to be used ---- Spotify API to start and hopefully use the other APIs listed in sketch for 
-                                additional inspiration
+APIs to be used ---- Youtube's IFrame Player API to start and hopefully use the other APIs listed in sketch for 
+                                additional inspiration ( Open Library API and DeviantArt API is in the works at the moment).
 
 Rough Breakdown of Tasks
 
@@ -21,6 +21,7 @@ Rough Breakdown of Tasks
 * Add Firebase database
 * Set up on.click function from the HTML
 * Get AJAX calls for band, song, image
-* Sync the results from spotify button submit to the HTML locations where we want them to appear.
+* Sync the results from music search submit to the HTML locations where we want them to appear.
 * Try to allow a function of creating a Favorites List using Firebase
 * Get AJAX calls Steps 4 & 5 for compilation search if time allotted
+* Use a new library that hasn't been discussed in class (Particles.js jQuery plugin was selected)
