@@ -16,11 +16,59 @@ function go_get() {
   return false;
 }
 
-//Deviant Art
-/* var oembed_url = 'https://backend.deviantart.com/oembed?url=http%3A%2F%2Ffav.me%2Fd2enxz7&format=jsonp&callback=?';
-$.getJSON(oembed_url, function(data) {
-  console.log('Deviation by: ' + data.author_name);
-  console.log('Photo ' + data.thumbnail_url);
-}); */
+//Poetry DB
+/* 
+$(document).on("click", '.compilation-search-button', function () {
+
+  var searchTerm = $("#compilation-input").val();
+  var url = "http://poetrydb.org/lines/" +
+    `${searchTerm}` +
+    `/lines.json`;
+
+  $.ajax({
+    url: url,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    clear();
+
+    response.json.forEach(function (data, index) {
+      var poetryResult = $(`
+              <div class="text-white-50 bg-dark">
+                  <div> Title: ${response.json[0].title} </div>
+                  <div> Author: ${response.json[0].author}</div>
+                  <div> Lines: ${response.json[0].lines} </div>
+                  <br />
+              </div>
+          `)
+      poetryResult.appendTo(".poetry-result");
+    });
+  });
+}) */ 
+
+//Quotes
+$(document).on("click", '.compilation-search-button', function () {
+
+  var url = "https://andruxnet-random-famous-quotes.com/";
+
+  $.ajax({
+    url: url,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    clear();
+
+    response.forEach(function (data, index) {
+      var famousQuoteResult = $(`
+              <div class="text-white-50 bg-dark">
+                  <div> Quote: ${response[0].quote} </div>
+                  <div> Author: ${response[0].author}</div>
+                  <br />
+              </div>
+          `)
+      famousQuoteResult.appendTo(".quote-result");
+    });
+  });
+}) 
 
 
