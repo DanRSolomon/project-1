@@ -25,6 +25,7 @@ $(document).on("click", '.compilation-search-button', function () {
   var robotResult = $(`
       <div class="text-white-50 bg-dark">
       <img class="w-100" src="${url}" alt="Robot Image" />
+      <div>Robots lovingly delivered by <a href="https://robohash.org/">Robohash.org</a></div>
       <br />
       </div>
   `)
