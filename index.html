@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <title>aMUSEme- An Inspirational Site</title>
+    <link rel="shortcut icon" href="assets/images/favicon.JPG" width="398" height="398" style="margin-top: 0px;">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--CSS Reset-->
     <link rel="stylesheet" media="screen" type="text/css" href="assets/css/reset.css" />
@@ -13,25 +14,60 @@
         crossorigin="anonymous" />
     <!--CSS Styles-->
     <link rel="stylesheet" media="screen" type="text/css" href="assets/css/styles.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="assets/css/cards.css" />
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+
 </head>
 
 <body>
+
     <div id="particles-js" class="particles-container"></div>
     <!-- Nav Bar Header -->
     <div class="container">
+
+        <!-- Modal Popup -->
+        <div class="modal" id="mymodal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center"> <i class="fas fa-headphones-alt"></i> <i class="fas fa-book"></i>
+                            What aMUSEme is all about <i class="fas fa-palette"></i> <i class="fas fa-headphones-alt"></i></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>aMUSEme is an Inspirational site that is meant
+                            to help creative people express themselves and find music, articles, and other artistic
+                            outlets to better the soul.</p>
+                        <p> Use the music search to get the good vibes flowing while you find some inspirational
+                            material through the
+                            compilation search feature. </p>
+                        <p> Feel free to bookmark this page for future and continuous use :).</p>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+
         <nav class="navbar navbar-dark bg-dark">
             <span class="navbar-brand mb-0 h1">aMUSEme</span>
             <span class="navbar-text text-black">
-                Find Your Inspiration
+                <a href="#" data-toggle="modal" data-target="#mymodal"> Find Your Inspiration</a>
             </span>
         </nav>
         <br>
+
+
         <!-- Search Input Forms Here -->
         <div class="row">
             <div class="form-group text-white text-center col-6">
@@ -39,33 +75,57 @@
                 <input type="text" class="form-control" id="compilation-input" placeholder="Find Related Art, Articles, Poetry, Books, you name it">
                 <!-- Button triggers new Compilation Search to be added -->
                 <input type="submit" class="compilation-search-button" value="Search Compilations" />
-                </form>
             </div>
             <div class="form-group text-white text-center col-6">
                 <label for="music-input"><strong>Search Music</strong></label>
                 <form onsubmit="go_get(); return false;">
-                    <input type="text" class="form-control" id="music-input" placeholder="Search Bands, songs, albums, radio stations and more">
                     <!-- Button triggers new Music Search to be added -->
-                    <input type="submit" value="Search Playlists" />
-                </form>
+                    <input type="text" name="fname" required class="form-control" id="music-input" placeholder="Search Bands, Songs, Albums, Radio Stations and More">
+                    <form action="/action_page.php" method="post">
+                        <input type="submit" class="music-search-button" value="Search Music" />
+                    </form>
             </div>
         </div>
-        <br>
-        <!-- Declaring the HTML location to input the 2 seperate search results -->
-        <div class="row" id="compilation-results-appear-here">
-            <div class="search-results"></div>
+        <!-- This is where the media player will be loaded -->
+        <div class="row">
+            <iframe id="music-iframe" width="1185" height="300"></iframe>
         </div>
 
-        <iframe id="music-iframe" width="300" height="675"></iframe>
+        <!-- display windows for the Compilation Results-->
+        <div style="color:white" class="container mt-5">
+            <div class="card-deck">
+                <div class="card cardColor1">
+                    <div class="card-body">
+                        <div class="book-result compilation-results">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card cardColor2">
+                    <div class="card-body">
+                        <div class="robot-result compilation-results">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 
     </div>
 
 
-
-    <!--Javascript-->
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!--Particles.js and Our Javascript-->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="assets/javascript/app.js"></script>
-    
+
 
 
 </body>

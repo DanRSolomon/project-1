@@ -4,6 +4,9 @@ particlesJS.load('particles-js', 'assets/particles.json', function () {
 });
 
 
+
+//Hide Youtube at first
+$("#music-iframe").toggle(false);
 //Script to pull YouTube playlists
 function go_get() {
   // 2. This code loads the IFrame Player API code asynchronously.
@@ -15,28 +18,84 @@ function go_get() {
   ifr.src = target_url;
   return false;
 }
+//Display Youtube onClick 
+$(".music-search-button").click(function () {
+  $("#music-iframe").toggle();
+})
 
-//Robohash.org
+//When DOM is loaded, clear search results area
 document.addEventListener('DOMContentLoaded', function () {
- function clear() {
-   $(".search-results").empty()
- }
- clear();
-  
+  $("#modal-btn").on("click", function () {
+    $('#myModal').modal(options)
+  })
+  function clear() {
+    $(".compilation-results").empty()
+  }
+  //Clear function
+  clear();
+
+  //Hide compilation search areas
+  $(".card-deck").toggle(false);
+  //Search compilations button with onClick function
   $(document).on("click", '.compilation-search-button', function () {
     clear();
+    $(".card-deck").toggle();
 
+    //Robohash.org
     var searchTerm = $("#compilation-input").val();
     var url = "https://robohash.org/" + searchTerm + ".png";
     var robotResult = $(`
-        <div class="text-white-50 bg-dark">
-        <img class="w-100" src="${url}" alt="Robot Image" />
-        <div>Robots lovingly delivered by <a href="https://robohash.org/">Robohash.org</a></div>
-        <br />
-        </div>
+        <img src="${url}" class="img-fluid robot-result" alt="Robot Image">
+        <h3 class="card-title">Your Robot</h3>
+        <p>Robots lovingly delivered by <a href="https://robohash.org/">Robohash.org</a></p>
     `)
+    robotResult.appendTo(".robot-result");
 
-    robotResult.appendTo(".search-results");
- });
+    //OpenLibrary.org
+    var userSubjectSearch = $("#compilation-input").val();
+    var uriSubjectSearch = encodeURI(userSubjectSearch);
+    var queryURL = "https://openlibrary.org/subjects/" + uriSubjectSearch + ".json";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response);
+      var bookWorks = response.works;
+      if (bookWorks.length === 0) {
+        $(`
+          <h3>Sorry, no results.</h3>
+        `).appendTo(".book-result");
+      } else {
+        var randomBook = bookWorks[Math.floor(Math.random() * bookWorks.length)];
+        var subjectBookTitle = randomBook.title;
+        console.log(subjectBookTitle);
+        var coverImg = randomBook.cover_id
+        var bookID = randomBook.cover_edition_key
+        $(` 
+        <a href="https://openlibrary.org/books/${bookID}" target="_blank">
+        <img src="http://covers.openlibrary.org/b/id/${coverImg}-M.jpg">
+        <h3 class="card-title">${subjectBookTitle}</h3>
+        </a>
+        
+        <p>Cover image lovingly delivered by <a href="https://openlibrary.org/">OpenLibrary.org</a></p>
+        `).appendTo(".book-result");
+      };
+    });
+
+    // //Poetry DB
+    // var searchTerm = $("#compilation-input").val();
+    // var url = `http://poetrydb.org/lines/${searchTerm}/lines.json`;
+    // $.ajax({
+    //   url: url,
+    //   method: "GET",
+    //   headers: {
+    //     "accept": "application/json",
+    //     "Access-Control-Allow-Origin":"*",
+    //     'X-Mashape-Key': 'QNPeLrTuJImshsrV1xsmJKc5ytUZp16QOAAjsnch01iaEEZR3G',
+    //   },
+    // }).then(console.log)
+
+
+  });
 });
-
