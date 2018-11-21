@@ -16,11 +16,27 @@ function go_get() {
   return false;
 }
 
-//Deviant Art
-/* var oembed_url = 'https://backend.deviantart.com/oembed?url=http%3A%2F%2Ffav.me%2Fd2enxz7&format=jsonp&callback=?';
-$.getJSON(oembed_url, function(data) {
-  console.log('Deviation by: ' + data.author_name);
-  console.log('Photo ' + data.thumbnail_url);
-}); */
+//Robohash.org
+document.addEventListener('DOMContentLoaded', function () {
+ function clear() {
+   $(".search-results").empty()
+ }
+ clear();
+  
+  $(document).on("click", '.compilation-search-button', function () {
+    clear();
 
+    var searchTerm = $("#compilation-input").val();
+    var url = "https://robohash.org/" + searchTerm + ".png";
+    var robotResult = $(`
+        <div class="text-white-50 bg-dark">
+        <img class="w-100" src="${url}" alt="Robot Image" />
+        <div>Robots lovingly delivered by <a href="https://robohash.org/">Robohash.org</a></div>
+        <br />
+        </div>
+    `)
+
+    robotResult.appendTo(".search-results");
+ });
+});
 
