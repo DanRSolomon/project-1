@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Robohash.org
     var searchTerm = $("#compilation-input").val();
-    var url = "https://robohash.org/" + searchTerm + ".png";
+    var url = "https://robohash.org/${searchTerm}.png";
     var robotResult = $(`
         <img src="${url}" class="img-fluid robot-result" alt="Robot Image">
         <h3 class="card-title">Your Robot</h3>
