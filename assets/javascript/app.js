@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $.getJSON(apiEndpointBaseURL + "?" + queryString, function (data) {
       console.log(data);
     }); */
+    //Bored API, makes suggestions of stuff to do
     var urlBored = "https://www.boredapi.com/api/activity/";
     $.ajax({
       url: urlBored,
@@ -106,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(response);
       var boredActivity = response.activity;
     var boredResult = $(`
-        <img src="" class="img-fluid">
+        <img src="assets/images/try-something-different.png" class="img-fluid">
         <h3 class="card-title">A suggestion:</h3>
         <h5>${boredActivity}</h5>
         <p>Suggestion lovingly delivered by <a href="https://www.boredapi.com/">Boredapi.com</a></p>
