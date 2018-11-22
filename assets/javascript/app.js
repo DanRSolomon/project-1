@@ -87,17 +87,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }); //end of Open Library
 
     //Harvard Art Museum
-    // Find all of the objects that are paintings and have the word "rabbit" in the title
-  /*   var apiEndpointBaseURL = "https://api.harvardartmuseums.org/object";
+    // Find all of the objects that are paintings and have the "search term" in the title
+    var artSearchTerm = $('#compilation-input').val();
+    var apiEndpointBaseURL = "https://api.harvardartmuseums.org/object";
     var queryString = $.param({
-      apikey: "undefined",
-      title: "$('#compilation-input').val();",
+      apikey: "902637e0-edfe-11e8-9463-0b5d77676a26",
+      title: artSearchTerm,
       classification: "Paintings"
     });
 
-    $.getJSON(apiEndpointBaseURL + "?" + queryString, function (data) {
+    $.getJSON(apiEndpointBaseURL + "?" + queryString, function (data, index) {
       console.log(data);
-    }); */
+      var harvardRecord = data.records;
+      var randomHarvardRecord = harvardRecord[Math.floor(Math.random() * harvardRecord.length)];
+      var randomHarvardImage = randomHarvardRecord.images[0].baseimageurl;
+        if (randomHarvardImage === 'undefined') {
+          $.getJSON();
+        } else {
+          var randomHarvardImageTitle = randomHarvardRecord.title;
+          var randomHarvardLinkBack = randomHarvardRecord.url;
+          var harvardArtResult = $(`
+               <img src="${randomHarvardImage}" class="img-fluid harvard-result" alt="Static Image">
+                <h3 class="card-title">Your Inspiring Image</h3>
+                <h5><div>Title: ${randomHarvardImageTitle}</div>
+                    <a href="${randomHarvardLinkBack}">Find out more about it here.
+                    </a>
+                </h5>
+                <p>Artwork gracefully delivered by <a href="https://www.harvardartmuseums.org/">harvardartmuseums.org</a></p>
+            `)
+          harvardArtResult.appendTo(".harvard-result");
+      }
+    }); //end of Harvard Art Museum
 
   }); //end of search compilation onClick function
 }); //end of eventListener for DOM loading
