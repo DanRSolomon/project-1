@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   //Clear function
   clear();
-
+  
   //Hide compilation search areas
   $(".card-deck").toggle(false);
   //Search compilations button with onClick function
@@ -41,9 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
     clear();
     $(".card-deck").toggle();
 
+    // Send search term to save modal
+    var userSavedTerm = $("#compilation-input").val();
+    $("#user-search-term").html(userSavedTerm);
+
     //Robohash.org
     var searchTerm = $("#compilation-input").val();
-    var url = "https://robohash.org/" + searchTerm + ".png";
+    var url = "https://robohash.org/${searchTerm}.png";
     var robotResult = $(`
         <img src="${url}" class="img-fluid robot-result" alt="Robot Image">
         <h3 class="card-title">Your Robot</h3>
@@ -96,6 +100,55 @@ document.addEventListener('DOMContentLoaded', function () {
     //   },
     // }).then(console.log)
 
-
   });
+});
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyDahpCBh75i8lWv0Rb-m2EK9t2nvyC2rik",
+  authDomain: "this-is-a-test-bb2be.firebaseapp.com",
+  databaseURL: "https://this-is-a-test-bb2be.firebaseio.com",
+  projectId: "this-is-a-test-bb2be",
+  storageBucket: "this-is-a-test-bb2be.appspot.com",
+  messagingSenderId: "890505952792"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+// Save user search term and comment
+$("#save-button").on("click", function (event) {
+  event.preventDefault();
+
+  var userSavedTerm = $("#user-search-term").html();
+  var userSavedComment = $("#user-comment").val().trim();
+  console.log(userSavedTerm);
+  console.log(userSavedComment);
+
+  var newUserSave = {
+    searchTerm: userSavedTerm,
+    comment: userSavedComment
+  };
+
+  database.ref().push(newUserSave);
+});
+
+// Add previous comments to Save Modal
+database.ref().on("child_added", function (childSnapshot) {
+  console.log(childSnapshot.val());
+  var snap = childSnapshot.val();
+
+  var prevSearchTerm = snap.searchTerm;
+  var prevComment = snap.comment;
+
+  console.log(prevSearchTerm);
+  console.log(prevComment);
+
+  $(`
+    <tr>
+      <td>${prevSearchTerm}</td>
+      <td>${prevComment}</td>
+    </tr>  
+  `).prependTo('#past-searches');
+
 });
