@@ -23,6 +23,8 @@
         crossorigin="anonymous" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <!-- FireBase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
 </head>
 
@@ -115,6 +117,57 @@
     </div>
 
     </div>
+
+    <!-- Search Modal Popup -->
+    <div class="modal" id="search-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title text-center">
+                        <h4>Whould you like save your search to help inspire others in our community?</h4>
+                        <p>Be kind and no personal information please</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="user-search-term"></span>
+                        </div>
+                        <input type="text" class="form-control" id="user-comment" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <div class="input-group-append input-group-sm">
+                            <button class="btn btn-outline-secondary" type="button" id="save-button">Save</button>
+                        </div>
+                    </div>
+                    <br>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" style="width: 25%">Search Term</th>
+                                <th scope="col" style="width: 75%">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="past-searches">
+                        </tbody>
+                    </table>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Search Modal -->
+
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+        <span class="navbar-text text-black">
+            <a href="#" data-toggle="modal" data-target="#search-modal">
+                Save your inspirational searches and see what others are searching!
+            </a>
+        </span>
+    </nav>
 
 
     <!-- Bootstrap Javascript -->
