@@ -98,6 +98,21 @@ document.addEventListener('DOMContentLoaded', function () {
     $.getJSON(apiEndpointBaseURL + "?" + queryString, function (data) {
       console.log(data);
     }); */
-
+    var urlBored = "https://www.boredapi.com/api/activity/";
+    $.ajax({
+      url: urlBored,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+      var boredActivity = response.activity;
+    var boredResult = $(`
+        <img src="" class="img-fluid">
+        <h3 class="card-title">A suggestion:</h3>
+        <h5>${boredActivity}</h5>
+        <p>Suggestion lovingly delivered by <a href="https://www.boredapi.com/">Boredapi.com</a></p>
+     `);
+    boredResult.appendTo(".bored-result");
+    });
+  
   }); //end of search compilation onClick function
 }); //end of eventListener for DOM loading
