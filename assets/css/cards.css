@@ -9,10 +9,8 @@
 }
 
 
-.cardColor1 {
+.cardColor1, .cardColor2  {
     background-color: #343a40!important;
-}
-
-.cardColor2 {
-    background-color: #343a40!important;
+    border: 2px solid #Eccc;
+    border-radius: 10px;
 }
