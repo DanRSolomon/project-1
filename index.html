@@ -74,15 +74,20 @@
         <div class="row">
             <div class="form-group text-white text-center col-6">
                 <label for="compilation-input"><strong>Compilation Search</strong></label>
-                <input type="text" class="form-control" id="compilation-input" placeholder="Find Related Art, Articles, Poetry, Books, you name it">
+                <form onsubmit="return false;">
+                <input type="text" required onfocus="this.value=''" class="form-control" id="compilation-input"
+                    placeholder="Find Related Art, Articles, Poetry, Books, you name it">
                 <!-- Button triggers new Compilation Search to be added -->
                 <input type="submit" class="compilation-search-button" value="Search Compilations" />
+                </form>
             </div>
+            
             <div class="form-group text-white text-center col-6">
                 <label for="music-input"><strong>Search Music</strong></label>
                 <form onsubmit="go_get(); return false;">
                     <!-- Button triggers new Music Search to be added -->
-                    <input type="text" name="fname" required class="form-control" id="music-input" placeholder="Search Bands, Songs, Albums, Radio Stations and More">
+                    <input type="text" name="fname" required onfocus="this.value=''" class="form-control" id="music-input"
+                        placeholder="Search Bands, Songs, Albums, Radio Stations and More">
                     <form action="/action_page.php" method="post">
                         <input type="submit" class="music-search-button" value="Search Music" />
                     </form>
@@ -135,7 +140,7 @@
                         </div>
                         <input type="text" class="form-control" id="user-comment" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                         <div class="input-group-append input-group-sm">
-                            <button class="btn btn-outline-secondary" type="button" id="save-button">Save</button>
+                            <button class="btn btn-outline-secondary mt-0" type="button" id="save-button">Save</button>
                         </div>
                     </div>
                     <br>
