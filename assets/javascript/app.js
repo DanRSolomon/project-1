@@ -87,57 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
       };
     });
 
-  //Toggle off compilation card-deck to keep the appearance clean
-  $(".card-deck").toggle(false);
-  //Search compilations button with onClick function
-  $(document).on("click", '.compilation-search-button', function () {
-    clear();
-    //Toggle on card-deck after onClick function
-    $(".card-deck").toggle();
-
-    //Robohash.org
-    var searchTerm = $("#compilation-input").val();
-    var url = "https://robohash.org/" + searchTerm + ".png";
-    var robotResult = $(`
-        <img src="${url}" class="img-fluid robot-result" alt="Robot Image">
-        <h3 class="card-title">Your Robot</h3>
-        <p>Robots lovingly delivered by <a href="https://robohash.org/">Robohash.org</a></p>
-    `)
-    robotResult.appendTo(".robot-result");
-    //end of Robohash.org
-
-    //OpenLibrary.org
-    var userSubjectSearch = $("#compilation-input").val();
-    var uriSubjectSearch = encodeURI(userSubjectSearch);
-    var queryURL = "https://openlibrary.org/subjects/" + uriSubjectSearch + ".json";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response);
-      var bookWorks = response.works;
-      if (bookWorks.length === 0) {
-        $(`
-          <h3>Sorry, no results.</h3>
-        `).appendTo(".book-result");
-      } else {
-        var randomBook = bookWorks[Math.floor(Math.random() * bookWorks.length)];
-        var subjectBookTitle = randomBook.title;
-        console.log(subjectBookTitle);
-        var coverImg = randomBook.cover_id
-        var bookID = randomBook.cover_edition_key
-        $(` 
-        <a href="https://openlibrary.org/books/${bookID}" target="_blank">
-        <img src="http://covers.openlibrary.org/b/id/${coverImg}-M.jpg">
-        <h3 class="card-title">${subjectBookTitle}</h3>
-        </a>
-        
-        <p>Cover image lovingly delivered by <a href="https://openlibrary.org/">OpenLibrary.org</a></p>
-        `).appendTo(".book-result");
-      };
-    }); //end of Open Library
-
     //Harvard Art Museum
     // Find all of the objects that are paintings and have the "search term" in the title
     var artSearchTerm = $('#compilation-input').val();
