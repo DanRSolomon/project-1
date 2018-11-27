@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var randomBook = bookWorks[Math.floor(Math.random() * bookWorks.length)];
         var subjectBookTitle = randomBook.title;
         console.log(subjectBookTitle);
-        var coverImg = randomBook.cover_id
-        var bookID = randomBook.cover_edition_key
+        var coverImg = randomBook.cover_id;
+        var bookID = randomBook.cover_edition_key;
         var bookURL = "https://openlibrary.org/books/" + bookID;
         
         // sending book info to save modal
