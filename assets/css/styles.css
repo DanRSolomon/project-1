@@ -9,6 +9,8 @@ body {
 iframe {
     float: right;
     margin-bottom: 2px;
+    border: 2px solid #E5794D;
+    border-radius: 10px;
 }
 
 button {
