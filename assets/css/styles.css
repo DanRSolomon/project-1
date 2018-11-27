@@ -2,7 +2,7 @@ body {
     background-image: url(../images/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fluid;
+    background-attachment: fixed;
 
 }
 
@@ -77,4 +77,13 @@ canvas {
 
 .modal-footer {
     background-color: #E5794D;
+}
+
+.fixed-bottom {
+    position:sticky;
+    margin-top: 55vh;
+}
+
+.modal-content {
+    width: 100vw;
 }
