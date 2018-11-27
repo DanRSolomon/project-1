@@ -88,14 +88,14 @@ document.addEventListener('DOMContentLoaded', function () {
       title: artSearchTerm,
       classification: "Paintings"
     });
-
-    $.getJSON(apiEndpointBaseURL + "?" + queryString, function (data) {
+     function harvardImage(){
+       $.getJSON(apiEndpointBaseURL + "?" + queryString, function (data) {
       console.log(data);  
         var harvardRecord = data.records;
         var randomHarvardRecord = harvardRecord[Math.floor(Math.random() * harvardRecord.length)];
         var randomHarvardImage = randomHarvardRecord.images[0].baseimageurl;
       if (randomHarvardImage === 'undefined' || randomHarvardImage === 0) {
-       $.getJSON();
+       harvardImage();
       } else {
         var randomHarvardImageTitle = randomHarvardRecord.title;
         var randomHarvardLinkBack = randomHarvardRecord.url;
@@ -111,12 +111,15 @@ document.addEventListener('DOMContentLoaded', function () {
         harvardArtResult.appendTo(".harvard-art-result");
       }
     });
+     } harvardImage();
+    
     // Person search within objects
     var personQueryString = $.param({
       apikey: apiKey,
       person: artSearchTerm,
     });
-    $.getJSON(apiEndpointBaseURL + "?" + personQueryString, function (data) {
+    function harvardPerson(){
+      $.getJSON(apiEndpointBaseURL + "?" + personQueryString, function (data) {
       console.log(data);
       var harvardRecord = data.records;
       var randomHarvardRecord = harvardRecord[Math.floor(Math.random() * harvardRecord.length)];
@@ -152,36 +155,40 @@ document.addEventListener('DOMContentLoaded', function () {
         harvardPersonResult.appendTo(".harvard-person-result");
       }
     }); //end Person search
+    } harvardPerson();
+    
     //Sculpture search within objects
     var sculptureQueryString = $.param({
       apikey: apiKey,
       title: artSearchTerm,
       classification: "Sculpture",
     })
-    $.getJSON(apiEndpointBaseURL + "?" + sculptureQueryString, function (data) {
-      console.log(data);
-      var harvardRecord = data.records;
-      var randomHarvardRecord = harvardRecord[Math.floor(Math.random() * harvardRecord.length)];
-      var sculptureImage = randomHarvardRecord.images[0].baseimageurl;
-      if (sculptureImage === 'undefined' || sculptureImage === 0) {
-        $.getJSON();
-      } else {
-        var sculptureCulture = randomHarvardRecord.culture;
-        var sculptureTitle = randomHarvardRecord.title;
-        var sculptureURL = randomHarvardRecord.url;
-        var harvardSculptureResult = $(`
-      <img src="${sculptureURL}" class="img-fluid harvard-result" alt="Static Image">
-      <h3 class="card-title">Your Inspiring Person</h3>
-      <h5><div>Title: ${sculptureTitle}</div>
-         <div>Culture: ${sculptureCulture}</div>
-          <a href="${sculptureURL}">Find out more about this sculpture here.
-          </a>
-      </h5>
-      <p>3D-ness brought to you by <a href="https://www.harvardartmuseums.org/">harvardartmuseums.org</a></p>
-  `)
-        harvardSculptureResult.appendTo(".harvard-sculpture-result");
-      }
-    }); //end Sculpture search
+    function harvardSculpture(){
+      $.getJSON(apiEndpointBaseURL + "?" + sculptureQueryString, function (data) {
+        console.log(data);
+        var harvardRecord = data.records;
+        var randomHarvardRecord = harvardRecord[Math.floor(Math.random() * harvardRecord.length)];
+        var sculptureImage = randomHarvardRecord.images[0].baseimageurl;
+        if (sculptureImage === 'undefined' || sculptureImage === 0) {
+          harvardSculpture();
+        } else {
+          var sculptureCulture = randomHarvardRecord.culture;
+          var sculptureTitle = randomHarvardRecord.title;
+          var sculptureURL = randomHarvardRecord.url;
+          var harvardSculptureResult = $(`
+        <img src="${sculptureImage}" class="img-fluid harvard-result" alt="Static Image">
+        <h3 class="card-title">Your Inspiring Person</h3>
+        <h5><div>Title: ${sculptureTitle}</div>
+           <div>Culture: ${sculptureCulture}</div>
+            <a href="${sculptureURL}">Find out more about this sculpture here.
+            </a>
+        </h5>
+        <p>3D-ness brought to you by <a href="https://www.harvardartmuseums.org/">harvardartmuseums.org</a></p>
+    `)
+          harvardSculptureResult.appendTo(".harvard-sculpture-result");
+        }
+      }); //end Sculpture search
+    } harvardSculpture();
     //end of Harvard Art Museum
 
   }); //end of search compilation onClick function
