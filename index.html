@@ -83,7 +83,7 @@
             </div>
             
             <div class="form-group text-white text-center col-6">
-                <label for="music-input"><strong>Search Music</strong></label>
+                <label for="music-input"><strong>Music Search</strong></label>
                 <form onsubmit="go_get(); return false;">
                     <!-- Button triggers new Music Search to be added -->
                     <input type="text" name="fname" required onfocus="this.value=''" class="form-control" id="music-input"
@@ -93,8 +93,12 @@
                     </form>
             </div>
         </div>
+        <!-- This is where the media player will be loaded -->
+        <div class="row">
+            <iframe id="music-iframe" width="1185" height="300" allowfullscreen></iframe>
+        </div>
         <br>
-        <!-- Declaring the HTML location to input the 2 seperate search results -->
+        <!-- Declaring the HTML location to input compilation search results -->
         <div class="row" id="compilation-results-appear-here">
             <div style="color:white" class="container mt-5">
                 <div class="card-deck">
@@ -104,7 +108,23 @@
                             </div>
                         </div>
                     </div>
-    
+
+                    <div class="card cardColor2">
+                        <div class="card-body">
+                            <div class="bored-result compilation-results">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="card cardColor2">
+                        <div class="card-body">
+                            <div class="robot-result compilation-results">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="card-deck">
                     <div class="card cardColor2">
                         <div class="card-body">
                             <div class="harvard-person-result compilation-results">
@@ -112,6 +132,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card cardColor2">
                         <div class="card-body">
                             <div class="harvard-art-result compilation-results">
@@ -119,6 +140,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card cardColor2">
                         <div class="card-body">
                             <div class="harvard-sculpture-result compilation-results">
@@ -126,12 +148,11 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             
         </div>
-
-        <!-- display windows for the Compilation Results-->
         
     </div>
 
@@ -151,6 +172,18 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="user-search-term"></span>
                         </div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="user-book"></span>
+                        </div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="user-person"></span>
+                        </div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="user-art"></span>
+                        </div>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="user-sculpture"></span>
+                        </div>
                         <input type="text" class="form-control" id="user-comment" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                         <div class="input-group-append input-group-sm">
                             <button class="btn btn-outline-secondary mt-0" type="button" id="save-button">Save</button>
@@ -160,8 +193,12 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col" style="width: 25%">Search Term</th>
-                                <th scope="col" style="width: 75%">Comment</th>
+                                <th scope="col" style="width: 10%">Search Term</th>
+                                <th scope="col" style="width: 10%">Book</th>
+                                <th scope="col" style="width: 10%">Person</th>
+                                <th scope="col" style="width: 10%">Art</th>
+                                <th scope="col" style="width: 10%">Sculpture</th>
+                                <th scope="col" style="width: 50%">Comment</th>
                             </tr>
                         </thead>
                         <tbody id="past-searches">
