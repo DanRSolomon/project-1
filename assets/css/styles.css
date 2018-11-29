@@ -3,7 +3,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
+    padding-bottom: 60px;
 }
 
 iframe {
@@ -80,10 +80,15 @@ canvas {
 }
 
 .fixed-bottom {
-    position:sticky;
-    margin-top: 55vh;
-}
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+ }
 .modal-content {
     width: 100vw;
 }
