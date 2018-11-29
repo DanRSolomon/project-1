@@ -1,14 +1,24 @@
 # project-1
 
-Project Title ------ aMUSEme *Find your Inspiration*
+Project Title ------ [Check out our application!](https://danrsolomon.github.io/project-1/) aMUSEme *Find your Inspiration*
 
-Team Members --- Dan, Kieran, Jennifer, Melissa
+Team Members --- [Dan](https://github.com/DanRSolomon), [Kieran](https://github.com/LopTwo), [Jennifer](https://github.com/alejosjen), [Melissa](https://github.com/melperez19)
 
 Project Description --- This page provides musical and visual inspiration to get people to think  
                                     creatively. The app will incorporate creating personal music playlists and 
                                     displaying web search results based on key search terms.
 
-Sketch of final product - ![layout-image](/assets/images/art-inspiration-compilation.gif) -- created by Team Member Jennifer
+Sketch of final product - 
+
+![layout-image](/assets/images/art-inspiration-compilation.gif) 
+
+-- created by Team Member Jennifer
+
+Final application screesnshot -
+
+![final-screenshot](/assets/images/project-1-screenshot.png) 
+
+-- created by Team Funtastic 4
 
 APIs used
 
