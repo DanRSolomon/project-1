@@ -1,8 +1,8 @@
 # project-1
 
-Project Title ------ aMUSEme *Find your Inspiration*
+Project Title ------ [Check out our application!](https://danrsolomon.github.io/project-1/) aMUSEme *Find your Inspiration*
 
-Team Members --- Dan, Kieran, Jennifer, Melissa
+Team Members --- [Dan!](https://github.com/DanRSolomon), [Kieran!](https://github.com/LopTwo), [Jennifer!](https://github.com/alejosjen), [Melissa!](https://github.com/melperez19)
 
 Project Description --- This page provides musical and visual inspiration to get people to think  
                                     creatively. The app will incorporate creating personal music playlists and 
