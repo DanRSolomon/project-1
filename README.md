@@ -10,8 +10,13 @@ Project Description --- This page provides musical and visual inspiration to get
 
 Sketch of final product - ![layout-image](/assets/images/art-inspiration-compilation.gif) -- created by Team Member Jennifer
 
-APIs to be used ---- Youtube's IFrame Player API to start and hopefully use the other APIs listed in sketch for 
-                                additional inspiration ( Open Library API and DeviantArt API is in the works at the moment).
+APIs used
+
+* Youtube's IFrame Player
+* OpenLibrary.org (experimental 'search API')
+* Robohash.org
+* Harvard Art Museum
+* BoredAPI.com
 
 Rough Breakdown of Tasks
 
