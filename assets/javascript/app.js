@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var bookURL = "https://openlibrary.org/books/" + bookID;
 
           // sending book info to save modal
-          $("#user-book").append('<a href=' + bookURL + ' target="_blank">' + subjectBookTitle + '</a>');
+          $("#user-book").html('<a href=' + bookURL + ' target="_blank">' + subjectBookTitle + '</a>');
 
           $(` 
             <a href=${bookURL} target="_blank">
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var randomHarvardLinkBack = randomHarvardRecord.url;
 
           // sending art info to save modal
-          $("#user-art").append('<a href=' + randomHarvardLinkBack + ' target="_blank">' + randomHarvardImageTitle + '</a>');
+          $("#user-art").html('<a href=' + randomHarvardLinkBack + ' target="_blank">' + randomHarvardImageTitle + '</a>');
 
           var harvardArtResult = $(`
                  <img src="${randomHarvardImage}" class="img-fluid harvard-result" alt="Static Image">
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var workURL = randomHarvardRecord.url;
 
         // sending person info to save modal
-        $("#user-person").append('<a href=' + workURL + ' target="_blank">' + personName + '</a>');
+        $("#user-person").html('<a href=' + workURL + ' target="_blank">' + personName + '</a>');
 
         var harvardPersonResult = $(`
               <h3 class="card-title">Your Inspiring Person</h3>
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var sculptureURL = randomHarvardRecord.url;
 
             // sending sculpture info to save modal
-            $("#user-sculpture").append('<a href=' + sculptureURL + ' target="_blank">' + sculptureTitle + '</a>');
+            $("#user-sculpture").html('<a href=' + sculptureURL + ' target="_blank">' + sculptureTitle + '</a>');
 
             var harvardSculptureResult = $(`
               <img src="${sculptureImage}" class="img-fluid harvard-result" alt="Static Image">
